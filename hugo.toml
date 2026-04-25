@@ -116,7 +116,7 @@ enableEmoji = true
   # 3. 启用仓库的 Discussions 功能
   # 4. 访问 https://giscus.app/zh-CN 获取你的配置参数并替换下面的值
   [params.giscus]
-    repo = "atitoken/blog"
+    repo = "ATIAboo/blog"
     repoID = ""          # 从 giscus.app 获取
     category = "General"
     categoryID = ""      # 从 giscus.app 获取
