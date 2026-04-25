@@ -1,0 +1,25 @@
+# Hugo 生成文件
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# Hugo Modules
+/go.sum
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Node (如果需要)
+node_modules/
