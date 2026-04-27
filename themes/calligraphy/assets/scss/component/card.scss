@@ -23,7 +23,7 @@
             grid-column: span 12;
 
             #{$block}__cover {
-                flex: 3 1 0;
+                flex: 1 1 50%;
 
                 img {
                     height: 100%;
@@ -37,7 +37,7 @@
 
             #{$block}__content {
                 display: flex;
-                flex: 2 1 0;
+                flex: 1 1 50%;
                 flex-direction: column;
                 justify-content: center;
             }
