@@ -91,14 +91,14 @@ enableInlineShortcodes = true
 
 [params.giscus]
   repo = "ATIAboo/blog"
-  repoID = ""          # 从 giscus.app 获取
-  category = "General"
-  categoryID = ""      # 从 giscus.app 获取
+  repoID = "R_kgDOSMbHXQ"
+  category = "Announcements"
+  categoryID = "DIC_kwDOSMbHXc4C7zoq"
   mapping = "pathname"
   strict = "0"
   reactionsEnabled = "1"
   emitMetadata = "0"
-  inputPosition = "top"
+  inputPosition = "bottom"
   theme = "preferred_color_scheme"
   lang = "zh-CN"
 
