@@ -18,59 +18,12 @@
         }
 
         &--featured {
-            display: flex;
-            flex-direction: row;
             grid-column: span 12;
 
             #{$block}__cover {
-                flex: 1 1 50%;
-
                 img {
-                    height: 100%;
-                    max-height: 500px;
+                    height: 400px;
                 }
-                
-                + #{$block}__content {
-                    margin: 0;
-                }
-            }
-
-            #{$block}__content {
-                display: flex;
-                flex: 1 1 50%;
-                flex-direction: column;
-                justify-content: center;
-            }
-        }
-    }
-
-    @include break(72rem) {
-
-        &--additional {
-            grid-column: span 4;
-            font-size: typeScale(1, down);
-
-            #{$block}__cover {
-                img {
-                    height: 125px;
-                }
-            }
-
-            #{$block}__title {
-                font-size: typeScale(1);
-                letter-spacing: 1.5px;
-            }
-
-            #{$block}__authors {
-                
-                &::after {
-                    content: '·';
-                    margin: 0 0.5ch;
-                }
-            }
-
-            #{$block}__description {
-                display: none;
             }
         }
     }
@@ -116,8 +69,8 @@
     &__content {
         position: relative;
         flex-grow: 1;
-        margin: typeScale(-6, up, em) typeScale(1, up, em) 0;
-        padding: typeScale(2, up, em) clamp(#{typeScale(1, up, em)}, 5vw, #{typeScale(4, up, em)});
+        margin: typeScale(-6, up, em) 0 0;
+        padding: typeScale(2, up, em) clamp(#{typeScale(1, up, em)}, 5vw, #{typeScale(4, up, em)}) typeScale(2, up, em);
         background-color: var(--color-canvas-tint);
     }
 
