@@ -65,13 +65,12 @@
     // detect user preferences here to prevent flickers
     function detectPreferences() {
 
-      // detect dark mode preference
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches && !(localStorage.getItem("dark-mode") === "off") ) {
+      // detect dark mode preference - default to dark
+      if (localStorage.getItem("dark-mode") === "off") {
+        document.documentElement.setAttribute("data-dark-mode", "off");
+      } else {
         document.documentElement.setAttribute("data-dark-mode", "on");
         localStorage.setItem("dark-mode", "on");
-      } else {
-        document.documentElement.setAttribute("data-dark-mode", "off");
-        localStorage.setItem("dark-mode", "off");
       }
       
       // detect reduced motion preference

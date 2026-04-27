@@ -4,9 +4,10 @@ date: 2026-04-25T23:30:00+08:00
 draft: false
 tags: ["日常", "博客"]
 categories: ["随想"]
-summary: "嚏语开张了！这是我的第一篇博文，聊聊为什么要搭建这个博客。"
-ShowToc: true
-TocOpen: true
+description: "嚏语开张了！这是我的第一篇博文，聊聊为什么要搭建这个博客。"
+feature: "cover.png"
+featureAlt: "温馨的博客写作场景"
+comments: true
 ---
 
 ## 嚏语开张了 🎉

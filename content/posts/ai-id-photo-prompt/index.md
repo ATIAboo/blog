@@ -4,7 +4,9 @@ date: 2026-04-27T22:00:00+08:00
 draft: false
 tags: ["AI", "ChatGPT", "图像生成", "Prompt"]
 categories: ["技术"]
-summary: "用一句精心调教的 Prompt，让 ChatGPT 生成堪比影楼级别的职业证件照。附完整提示词和效果对比。"
+description: "用一句精心调教的 Prompt，让 ChatGPT 生成堪比影楼级别的职业证件照。附完整提示词和效果对比。"
+feature: "cover.png"
+featureAlt: "AI 证件照摄影工作室"
 comments: true
 ---
 

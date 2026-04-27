@@ -4,9 +4,9 @@ date: 2026-04-25T20:00:00+08:00
 draft: false
 tags: ["Obsidian", "同步", "自建服务", "PVE", "Cloudflare"]
 categories: ["技术"]
-summary: "不想用 Obsidian 官方同步（太贵）也不想用 iCloud（太慢）？来看看如何用 PVE 容器 + Rclone WebDAV + Cloudflare Tunnel 实现零成本、全平台无感同步。"
-ShowToc: true
-TocOpen: true
+description: "不想用 Obsidian 官方同步（太贵）也不想用 iCloud（太慢）？来看看如何用 PVE 容器 + Rclone WebDAV + Cloudflare Tunnel 实现零成本、全平台无感同步。"
+feature: "cover.png"
+featureAlt: "Obsidian 多端同步架构"
 comments: true
 ---
 ![Obsidian 多端同步架构](/images/posts/obsidian-sync-cover.png)
@@ -14,6 +14,7 @@ comments: true
 
 
 ![[ChatGPT Image 2026年4月27日 22_45_29.png]]
+
 用 Obsidian 记笔记有个绕不开的问题：**多端同步**。
 
 官方的 Obsidian Sync 好用归好用，但一年 $96 实在肉疼。iCloud 同步在 Windows 上体验灾难级。第三方网盘（坚果云、OneDrive）要么速度慢，要么有冲突问题。

@@ -4,12 +4,12 @@ date: 2026-04-26T00:00:00+08:00
 draft: false
 tags: ["AI", "科研", "深度学习", "LLM", "工作流"]
 categories: ["技术"]
-summary: "读了一篇 Top10 CS PhD 用 AI 做科研的万字长文，结合自己的理解，梳理一下 AI 辅助深度学习科研的核心经验：上下文管理才是一切的关键。"
-ShowToc: true
-TocOpen: true
+description: "读了一篇 Top10 CS PhD 用 AI 做科研的万字长文，结合自己的理解，梳理一下 AI 辅助深度学习科研的核心经验：上下文管理才是一切的关键。"
+feature: "cover.png"
+featureAlt: "AI 科研工作台"
 comments: true
 ---
-
+![[Gemini_Generated_Image_f8ybwaf8ybwaf8yb.png]]
 ## 起因
 
 前几天在 Linux.do 上看到一篇帖子，作者是 Top10 CS PhD 在读，发过 CVPR、ICCV、ICML、NeurIPS 等顶会，分享了自己用 AI 做深度学习科研的真实经验。标题叫《AI科研不完全指北》，副标题是：**Context Is All You Need**。

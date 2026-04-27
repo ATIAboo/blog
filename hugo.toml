@@ -34,6 +34,7 @@ enableInlineShortcodes = true
   keywords = ["博客", "技术", "生活", "阿嚏"]
   author = "阿嚏"
   DateFormat = "2006-01-02"
+  mainSections = ["posts"]
 
 [params.brand]
   nameShort = "嚏语"
