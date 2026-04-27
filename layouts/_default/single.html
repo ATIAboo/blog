@@ -1,12 +1,32 @@
 {{- define "main" }}
 <article class="card card--page{{ if not .Params.feature }} card--coverless{{ end }}">
+    {{- if .Params.feature }}
+    {{ .Scratch.Set "processing" "resize" }}
+    {{ .Scratch.Set "size" "x1300" }}
+    {{ $cover := partialCached "function/resize-image" . .Page "single" }}
+    <figure class="card__cover">
+        <img src="{{ $cover }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}" height="500px">
+    </figure>
+    {{- end }}
     <div class="card__content">
-        <h1 class="card__title">{{ .Title }}</h1>
-        {{ partialCached "function/content" . .Page }}
+        <div class="card__header">
+            {{ with .Params.series }}<a href="/series/{{ . | urlize }}" class="card__series" data-taxonomy="{{ print "series-" . | urlize }}">{{ . }}</a>{{ end }}
+            <h1 class="card__title">{{ .Title }}</h1>
+            {{ with .Params.subtitle }}<span class="card__subtitle">{{ . }}</span>{{ end }}
+            <div class="card__meta">
+                {{ with .PublishDate }}<time datetime="{{ . }}" class="card__date">{{ cond (eq (.Format "2006") (now.Format "2006")) (.Format "Jan 2") (.Format "2 Jan 2006") }}</time>{{ end }}
+            </div>
+        </div>
+        <hr>
+        {{ partial "function/content.html" . }}
 
-        <div class="comments">
+        <div class="comments" style="max-width: 35rem; margin: 2rem auto;">
             {{ partial "comments.html" . }}
         </div>
     </div>
 </article>
+{{- end }}
+
+{{- define "pagination" }}
+  {{ partial "site/pagination" . }}
 {{- end }}
