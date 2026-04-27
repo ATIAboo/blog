@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}" data-dark-mode="off" data-animations="on">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
+  <title>{{ block "title" . }}{{ cond (eq .Title .Site.Title) .Title (print .Title " | " .Site.Title) }}{{ end }}</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  {{- $description := .Description | default .Summary | default .Site.Params.description | default .Site.Params.tagline }}
+  <meta name="description" content="{{ $description }}">
+  {{ hugo.Generator }}
+  <meta name="robots" content="{{ cond hugo.IsProduction "index, follow" "noindex, nofollow"}}">
+
+  {{ partialCached "site/styles.html" . }}
+
+  {{- if .Site.Params.meta.faviconComplete }}
+  {{- $version := print "?v=" .Site.Params.meta.faviconVersion | default "" }}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ print "favicon/apple-touch-icon.png" $version | absURL}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ print "favicon/favicon-32x32.png" $version | absURL}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ print "favicon/favicon-16x16.png" $version | absURL}}">
+  <link rel="manifest" href="{{ print "favicon/site.webmanifest" $version | absURL}}">
+  {{ if .Site.Params.meta.faviconSVG }}<link rel="mask-icon" href="{{ print "favicon/safari-pinned-tab.svg" $version | absURL}}" color="{{ .Site.Params.meta.faviconMSColor | default .Site.Params.meta.faviconiOSColor | default "#fff" }}">{{ end }}
+  <link rel="shortcut icon" href="{{ print "favicon/favicon.ico" $version | absURL}}">
+  <meta name="msapplication-TileColor" content="{{ .Site.Params.meta.faviconMSColor | default .Site.Params.meta.faviconiOSColor | default "#fff" }}">
+  <meta name="msapplication-config" content="{{ print "favicon/browserconfig.xml" $version | absURL}}">
+  <meta name="theme-color" content="{{ .Site.Params.meta.faviconiOSColor | default .Site.Params.meta.faviconMSColor | default "#fff" }}">
+  {{- else }}
+  <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
+  {{- end }}
+
+  {{- with .OutputFormats.Get "RSS" }}
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
+  <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
+  {{- end }}
+
+  {{- with (.Params.keywords | default .Params.tags | default .Site.Params.keywords) }}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
+  {{- with .Params.authors }}<meta name="author" content="{{ delimit . ", " }}">{{- end }}
+  <meta name="og:title" content="{{ .Title | default .Site.Title }}">
+  <meta name="og:description" content="{{ $description }}">
+  <meta name="og:type" content="{{ cond .IsHome "website" "article" }}">
+  <meta name="og:site_name" content="{{ .Site.Title }}">
+  <meta name="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {{- $image := .Params.feature }}
+  {{- if $image }}
+    {{- $image = .Resources.GetMatch $image }}
+  {{- else if site.Params.meta.baseOGImage }}
+    {{- $image = resources.GetMatch site.Params.meta.baseOGImage }}
+  {{- end }}
+  {{- if $image }}
+  {{- $image = $image.Fit "1200x630" }}
+  {{- $imageTweet := $image.Fit "1024x512" }}
+  <meta name="og:image" content="{{ $image.Permalink }}">
+  <meta name="twitter:image" content="{{ $imageTweet.Permalink }}">
+  {{- end }}
+  {{ with .Site.Params.Twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
+	{{ block "head" . }}{{ partialCached "site/head-additions.html" . }}{{ end }}
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    // detect user preferences here to prevent flickers
+    function detectPreferences() {
+
+      // detect dark mode preference
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches && !(localStorage.getItem("dark-mode") === "off") ) {
+        document.documentElement.setAttribute("data-dark-mode", "on");
+        localStorage.setItem("dark-mode", "on");
+      } else {
+        document.documentElement.setAttribute("data-dark-mode", "off");
+        localStorage.setItem("dark-mode", "off");
+      }
+      
+      // detect reduced motion preference
+      if (window.matchMedia("(preferes-reduced-animations)").matches && !localStorage.getItem("animations") === "on") {
+        document.documentElement.setAttribute("data-animations", "off");
+        localStorage.setItem("animations", "off");
+      } else {
+        document.documentElement.setAttribute("data-animations", "on");
+        localStorage.setItem("animations", "on");
+      }
+    }
+
+    detectPreferences();
+
+  </script>
+
+  {{ block "header" . }}
+    {{ partial "site/header.html" . }}
+  {{ end }}
+
+  <main id="site-main" class="site__main l-grid" role="main">
+    {{ block "main" . }}{{ end }}
+    {{ block "sidebar-left" . }}{{ end }}
+    {{ block "sidebar-right" . }}{{ end }}
+    {{ block "pagination" . }}{{ end }}
+  </main>
+  
+  {{ block "footer" . }}{{ partialCached "site/footer.html" . }}{{ end }}
+
+</body>
+
+</html>

@@ -9,9 +9,11 @@ ShowToc: true
 TocOpen: true
 comments: true
 ---
-
+![Obsidian 多端同步架构](/images/posts/obsidian-sync-cover.png)
 ## 为什么要折腾同步？
 
+
+![[ChatGPT Image 2026年4月27日 22_45_29.png]]
 用 Obsidian 记笔记有个绕不开的问题：**多端同步**。
 
 官方的 Obsidian Sync 好用归好用，但一年 $96 实在肉疼。iCloud 同步在 Windows 上体验灾难级。第三方网盘（坚果云、OneDrive）要么速度慢，要么有冲突问题。

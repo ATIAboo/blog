@@ -1,0 +1,44 @@
+{{- define "main" }}
+<article class="card card--page{{ if not .Params.feature }} card--coverless{{ end }}">
+    {{- if .Params.feature }}
+    {{ .Scratch.Set "processing" "resize" }}
+    {{ .Scratch.Set "size" "x1300" }}
+    {{ $cover := partialCached "function/resize-image" . .Page "single" }}
+    <figure class="card__cover">
+        <img src="{{ $cover }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}" height="500px">
+    </figure>
+    {{- end }}
+  <div class="card__content">
+    <div class="card__header">
+        {{ with .Params.series }}<a href="/series/{{ . | urlize }}" class="card__series" data-taxonomy="{{ print "series-" . | urlize }}">{{ . }}</a>{{ end }}
+        <h1 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        {{ with .Params.subtitle }}<span class="card__subtitle">{{ . }}</span>{{ end }}
+        <div class="card__meta">
+            {{ with .Params.authors }}
+            <span class="card__authors">
+                {{ $authors := . }}
+                {{ $count := len $authors }}
+                {{ if eq $count 1 }}
+                    {{ index $authors 0 }}
+                {{ else if eq $count 2 }}
+                    {{ index $authors 0 }} and {{ index $authors 1 }}
+                {{ else }}
+                    {{ range $index, $author := $authors }}
+                        {{ if gt $index 0 }}, {{ end }}{{ $author }}
+                        {{ if eq $index (sub $count 1) }} and {{ end }}
+                    {{ end }}
+                {{ end }}
+            </span>
+            {{ end }}
+            {{ with .PublishDate }}<time datetime="{{ . }}" class="card__date">{{ cond (eq (.Format "2006") (now.Format "2006")) (.Format "Jan 2") (.Format "2 Jan 2006") }}</time>{{ end }}
+        </div>
+    </div>
+    <hr>
+    {{ partial "function/content.html" . }}
+  </div>
+</article>
+{{- end }}
+
+{{- define "pagination" }}
+  {{ partial "site/pagination" . }}
+{{- end }}

@@ -1,0 +1,22 @@
+{{- define "main" }}
+  {{- range .Paginator.Pages }}
+<article class="card">
+    {{- $authorPage := site.GetPage "authors" (urlize .Title) }}
+    {{- $image := (partial "function/author-image" (dict "author" .Title "size" "500x500 center")) }} 
+    <figure class="card__cover">
+        <a href="{{ .Permalink }}"><img src="{{ $image.thumbnail }}" alt="{{ .Title }}'s Headshot" height="500px"></a>
+    </figure>
+    <div class="card__content">
+        <div class="card__header">
+            <h2 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <span class="card__subtitle">{{ .Params.assignment | default "Guest Author" }}</span>
+            <div class="card__description">{{ .Params.description | default (.Summary | truncate 200 "...") }}</div>
+        </div>
+    </div>
+</article>
+  {{- end }}
+{{- end }}
+
+{{- define "pagination" }}
+  {{ partial "site/pagination" . }}
+{{- end }}

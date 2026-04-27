@@ -2,30 +2,22 @@ baseURL = "https://atitoken.com/"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "嚏语 | 阿嚏的小站"
-# PaperMod via Hugo Modules
-theme = ["github.com/adityatelange/hugo-PaperMod"]
+theme = ["calligraphy"]
 paginate = 10
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
 enableEmoji = true
+enableInlineShortcodes = true
 
-# Hugo Modules - PaperMod 主题
-[module]
-  [[module.imports]]
-    path = "github.com/adityatelange/hugo-PaperMod"
-
-# Minify 输出
 [minify]
   disableXML = true
   minifyOutput = true
 
-# 输出格式
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# Markdown 渲染
 [markup]
   [markup.highlight]
     codeFences = true
@@ -36,101 +28,33 @@ enableEmoji = true
     [markup.goldmark.renderer]
       unsafe = true
 
-# ==========================================
-# PaperMod 主题参数
-# ==========================================
 [params]
   env = "production"
-  title = "嚏语"
   description = "阿嚏的个人博客 — 记录技术、生活与思考"
   keywords = ["博客", "技术", "生活", "阿嚏"]
   author = "阿嚏"
   DateFormat = "2006-01-02"
-  defaultTheme = "auto"  # 自动跟随系统暗/亮模式
-  disableThemeToggle = false
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-  UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
-  hidemeta = false
-  hideSummary = false
-  showtoc = true
-  tocopen = false
 
-  # 搜索
-  [params.fuseOpts]
-    isCaseSensitive = false
-    shouldSort = true
-    location = 0
-    distance = 1000
-    threshold = 0.4
-    minMatchCharLength = 0
-    keys = ["title", "permalink", "summary", "content"]
+[params.brand]
+  nameShort = "嚏语"
+  tagline = "阿嚏的小站"
 
-  # 首页 Profile 模式
-  [params.profileMode]
-    enabled = true
-    title = "嚏语 🤧"
-    subtitle = "你好！我是阿嚏。这里是我分享技术、生活和随想的地方。"
-    imageUrl = ""
-    imageWidth = 150
-    imageHeight = 150
+[params.meta]
+  faviconComplete = false
 
-    [[params.profileMode.buttons]]
-      name = "📝 博客"
-      url = "posts"
+[params.giscus]
+  repo = "ATIAboo/blog"
+  repoID = ""          # 从 giscus.app 获取
+  category = "General"
+  categoryID = ""      # 从 giscus.app 获取
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  theme = "preferred_color_scheme"
+  lang = "zh-CN"
 
-    [[params.profileMode.buttons]]
-      name = "🔍 搜索"
-      url = "search"
-
-    [[params.profileMode.buttons]]
-      name = "🏷️ 标签"
-      url = "tags"
-
-  # 社交图标
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/atitoken"
-
-  [[params.socialIcons]]
-    name = "rss"
-    url = "index.xml"
-
-  # 封面图片默认设置
-  [params.cover]
-    hidden = false
-    hiddenInList = false
-    hiddenInSingle = false
-
-  # Giscus 评论系统
-  # 注意: 你需要在 GitHub 上:
-  # 1. 创建一个公开仓库（如 atitoken/blog-comments 或复用博客仓库）
-  # 2. 安装 Giscus App: https://github.com/apps/giscus
-  # 3. 启用仓库的 Discussions 功能
-  # 4. 访问 https://giscus.app/zh-CN 获取你的配置参数并替换下面的值
-  [params.giscus]
-    repo = "ATIAboo/blog"
-    repoID = ""          # 从 giscus.app 获取
-    category = "General"
-    categoryID = ""      # 从 giscus.app 获取
-    mapping = "pathname"
-    strict = "0"
-    reactionsEnabled = "1"
-    emitMetadata = "0"
-    inputPosition = "top"
-    theme = "preferred_color_scheme"
-    lang = "zh-CN"
-
-# ==========================================
-# 菜单
-# ==========================================
 [[menu.main]]
   identifier = "posts"
   name = "📝 文章"

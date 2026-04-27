@@ -1,0 +1,28 @@
+{{- if .IsPage }}
+{{- if gt (len (where .Site.RegularPages "Section" .Section)) 1 }}
+<footer class="site__container">
+  <nav class="pagination" aria-label="Page navigation">
+    {{ if .NextInSection }}<a href="{{ .NextInSection.Permalink }}" class="pagination-new" role="button"><span class="pagination-title">Next Post</span><br><span>{{ .NextInSection.Title }}</span></a>{{ end }}
+    {{ if .PrevInSection }}<a href="{{ .PrevInSection.Permalink }}" class="pagination-old" role="button"><span class="pagination-title">Previous Post</span><br><span>{{ .PrevInSection.Title }}</span></a>{{ end }}
+  </nav>
+</footer>
+{{- end }}
+{{- else if gt .Paginator.TotalPages 1 }}
+<footer class="site__container">
+  <nav class="pagination">
+    {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}">« Prev</a>
+    {{ end }}
+    {{ range .Paginator.Pagers }}
+      {{ if eq . $.Paginator }}
+        <span class="active">{{ .PageNumber }}</span>
+      {{ else }}
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      {{ end }}
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}">Next »</a>
+    {{ end }}
+  </nav>
+</footer>
+{{- end }}
