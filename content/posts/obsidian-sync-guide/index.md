@@ -9,11 +9,10 @@ feature: "cover.png"
 featureAlt: "Obsidian 多端同步架构"
 comments: true
 ---
-![Obsidian 多端同步架构](/images/posts/obsidian-sync-cover.png)
+
 ## 为什么要折腾同步？
 
-
-![[ChatGPT Image 2026年4月27日 22_45_29.png]]
+![Obsidian 同步方案](obsidian-chatgpt.png)
 
 用 Obsidian 记笔记有个绕不开的问题：**多端同步**。
 
